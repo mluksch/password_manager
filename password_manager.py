@@ -24,7 +24,11 @@ class PasswordManager:
         return dict(self.df.loc[self.df.website.str.contains(search_term), :].values)
 
     def get_entry(self, website):
-        return self.df[self.df.website == website].values[0]
+        values = self.df[self.df.website == website].values
+        print(f"values : {values}")
+        if values is not None:
+            return self.df[self.df.website == website].values[0]
+        return None
 
     def _save_current_entries(self):
         self.df.to_csv(config.PASSWORD_FILE, index=False)
