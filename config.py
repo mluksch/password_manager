@@ -1,3 +1,3 @@
-HEIGHT = 300
-WIDTH = 300
+HEIGHT = 250
+WIDTH = 290
 PASSWORD_FILE = "passwords.csv"
