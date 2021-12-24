@@ -64,7 +64,7 @@ class Gui:
         btn_delete_entry.grid(row=1, column=2, sticky="n")
 
         # button gen password
-        btn_generate_password = Button(text="Generate Password", command=self._on_click_delete_entry, width=15)
+        btn_generate_password = Button(text="Generate Password", command=self._on_click_generate_password, width=15)
         btn_generate_password.grid(row=4, column=2, sticky="n")
 
     # gui event handlers
@@ -72,9 +72,10 @@ class Gui:
         website = self.input_website.get()
         password = self.input_passwd.get()
         username = self.input_username.get()
-        self.password_manager.upsert_entry(website=website, password=password, username=username)
-        self._update_list()
-        self._clear_fields()
+        if website and password and username:
+            self.password_manager.upsert_entry(website=website, password=password, username=username)
+            self._update_list()
+            self._clear_fields()
 
     def _on_click_delete_entry(self):
         website = self.input_website.get()
@@ -98,7 +99,9 @@ class Gui:
         self._update_list()
 
     def _on_click_generate_password(self):
-        pass
+        generated = self.password_manager.generate_password()
+        self.input_passwd.delete(0, END)
+        self.input_passwd.insert(0, generated)
 
     def _on_click_entry(self, evt):
         w = evt.widget

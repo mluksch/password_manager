@@ -1,3 +1,5 @@
+import random
+
 import pandas as pd
 
 import config
@@ -29,3 +31,6 @@ class PasswordManager:
 
     def _save_current_entries(self):
         self.df.to_csv(config.PASSWORD_FILE, index=False)
+
+    def generate_password(self):
+        return "".join([random.choice(config.PASSWORD_LETTERS) for _ in range(0, 10)])
