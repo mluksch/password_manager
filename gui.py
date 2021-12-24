@@ -1,5 +1,7 @@
 from tkinter import *
 
+import pyperclip
+
 import config
 from password_manager import PasswordManager
 
@@ -102,6 +104,7 @@ class Gui:
         generated = self.password_manager.generate_password()
         self.input_passwd.delete(0, END)
         self.input_passwd.insert(0, generated)
+        pyperclip.copy(generated)
 
     def _on_click_entry(self, evt):
         w = evt.widget
@@ -118,6 +121,7 @@ class Gui:
                 self.input_username.insert(0, record["username"])
                 self.input_passwd.delete(0, END)
                 self.input_passwd.insert(0, record["password"])
+                pyperclip.copy(record["password"])
 
     def display(self):
         self.root.mainloop()
