@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.pyw'],
-             pathex=[],
+             pathex=['venv/Lib/site-packages'],
              binaries=[],
              datas=[],
              hiddenimports=[],
