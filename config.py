@@ -1,6 +1,11 @@
+import os
+
+import appdirs
+
 HEIGHT = 250
 WIDTH = 290
-PASSWORD_FILE = "passwords.csv"
+PASSWORD_FILE = os.path.join(appdirs.user_data_dir(), "passwords.csv")
+
 LETTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
