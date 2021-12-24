@@ -33,4 +33,8 @@ class PasswordManager:
         self.df.to_csv(config.PASSWORD_FILE, index=False)
 
     def generate_password(self):
-        return "".join([random.choice(config.PASSWORD_LETTERS) for _ in range(0, 10)])
+        letters = [random.choice(config.SYMBOLS)] + [random.choice(config.NUMBERS)] + [
+            random.choice(config.LETTERS)] + [
+                      random.choice(config.PASSWORD_LETTERS) for _ in range(0, 10)]
+        random.shuffle(letters)
+        return "".join(letters)
